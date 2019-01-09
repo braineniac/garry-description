@@ -1,0 +1,4 @@
+<launch>
+	<param name="garry-description"
+		command="xacro --inorder '$(find garry-description)/urdf/garry.urdf.xacro'"/>
+</launch>
