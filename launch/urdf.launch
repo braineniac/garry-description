@@ -1,4 +1,7 @@
 <launch>
-	<param name="garry-description"
-		command="xacro --inorder '$(find garry-description)/urdf/garry.urdf.xacro'"/>
+  <param name="garry-description"
+    command="xacro --inorder --xacro-ns '$(find garry-description)/urdf/garry.urdf.xacro'"/>
+  <include file="$(find urdf_tutorial)/launch/display.launch">
+    <arg name="model" value="$(find garry-description)/urdf/garry.urdf.xacro"/>
+  </include>
 </launch>
