@@ -124,10 +124,11 @@
 		</collision>
 	</link>
 	
-	<joint name="left_wheel_to_left_gearbox" type="fixed">
+	<joint name="left_wheel_to_left_gearbox" type="continuous">
 		<parent link="left_gearbox"/>
 		<child link="left_wheel"/>
 		<origin xyz="${-gearbox_x_joint} ${wheel_y_origin} ${wheel_z_origin}"/>
+		<axis xyz="-1 0 0"/>
 	</joint>
 
 	<joint name="left_gearbox_to_base" type="fixed">
@@ -136,10 +137,11 @@
 		<origin xyz="${-gearbox_x_origin} ${wheel_y_origin} ${base_z_len/2}"/>
 	</joint>
 	
-	<joint name="right_wheel_to_right_gearbox" type="fixed">
+	<joint name="right_wheel_to_right_gearbox" type="continuous">
 		<parent link="right_gearbox"/>
 		<child link="right_wheel"/>
 		<origin xyz="${gearbox_x_joint} ${wheel_y_origin} ${wheel_z_origin}"/>
+		<axis xyz="-1 0 0"/>
 	</joint>
 
 	<joint name="right_gearbox_to_base" type="fixed">

@@ -9,6 +9,10 @@ project(garry-description)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   urdf
+  roscpp
+  tf
+  sensor_msgs
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -66,10 +70,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
+#generate_messages(
 #   DEPENDENCIES
 #   std_msgs  # Or other packages containing msgs
-# )
+#)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -133,6 +137,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/garry-description_node.cpp)
 add_executable(parser src/parser.cpp)
+add_executable(state_publisher src/state_publisher.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -149,6 +154,7 @@ add_executable(parser src/parser.cpp)
 # )
 
 target_link_libraries(parser ${catkin_LIBRARIES})
+target_link_libraries(state_publisher ${catkin_LIBRARIES})
 
 #############
 ## Install ##
