@@ -166,7 +166,7 @@
 	<joint name="imu_to_base" type="fixed">
 		<parent link="base_link"/>
 		<child link="imu_link"/>
-		<origin xyz="${imu_x_origin} ${wheel_y_origin} ${base_z_len/2}"/>
+		<origin xyz="${imu_x_origin} ${wheel_y_origin} ${base_z_len/2}" rpy="0.0 0.0 -pi/2"/>
 	</joint>
 	
 	<link name="raspi_cam_link"/>

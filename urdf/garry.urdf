@@ -122,7 +122,7 @@
   <joint name="imu_to_base" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
-    <origin xyz="-4.0 -4.5 0.2"/>
+    <origin rpy="0.0 0.0 -pi/2" xyz="-4.0 -4.5 0.2"/>
   </joint>
   <link name="raspi_cam_link"/>
   <joint name="raspi_cam_to_base" type="fixed">
