@@ -27,6 +27,7 @@
 	<xacro:property name="imu_x_len" value="1.7"/>
 	<xacro:property name="imu_y_len" value="2.2"/>
 	<xacro:property name="imu_z_len" value="0.1"/>
+	<xacro:property name="imu_yaw" value="${-pi/2}"/>
 
 	<xacro:property name="raspi_cam_z_origin" value="15.0"/>
 
@@ -64,7 +65,6 @@
 		<parent link="base_link"/>
 		<child link="boards_link"/>
 		<origin xyz="0.0 ${board_y_origin} ${board_z_len/2}"/>
-
 	</joint>
 
 	<link name="right_gearbox">
@@ -124,7 +124,7 @@
 		</collision>
 	</link>
 	
-	<joint name="left_wheel_to_left_gearbox" type="continuous">
+	<joint name="left_wheel_to_left_gearbox" type="fixed">
 		<parent link="left_gearbox"/>
 		<child link="left_wheel"/>
 		<origin xyz="${-gearbox_x_joint} ${wheel_y_origin} ${wheel_z_origin}"/>
@@ -137,7 +137,7 @@
 		<origin xyz="${-gearbox_x_origin} ${wheel_y_origin} ${base_z_len/2}"/>
 	</joint>
 	
-	<joint name="right_wheel_to_right_gearbox" type="continuous">
+	<joint name="right_wheel_to_right_gearbox" type="fixed">
 		<parent link="right_gearbox"/>
 		<child link="right_wheel"/>
 		<origin xyz="${gearbox_x_joint} ${wheel_y_origin} ${wheel_z_origin}"/>
@@ -166,20 +166,20 @@
 	<joint name="imu_to_base" type="fixed">
 		<parent link="base_link"/>
 		<child link="imu_link"/>
-		<origin xyz="${imu_x_origin} ${wheel_y_origin} ${base_z_len/2}" rpy="0.0 0.0 -pi/2"/>
-	</joint>
-	
-	<link name="raspi_cam_link"/>
-	<joint name="raspi_cam_to_base" type="fixed">
-		<parent link="base_link"/>
-		<child link="raspi_cam_link"/>
-		<origin xyz="0.0 0.0 ${raspi_cam_z_origin}"/>
+		<origin xyz="${imu_x_origin} ${wheel_y_origin} ${base_z_len/2}" rpy="0.0 0.0 ${imu_yaw}"/>
 	</joint>
 	
 	<link name="webcam_link"/>
 	<joint name="webcam_to_base" type="fixed">
 		<parent link="base_link"/>
 		<child link="webcam_link"/>
+		<origin xyz="0.0 0.0 ${raspi_cam_z_origin}"/>
+	</joint>
+	
+	<link name="raspicam_link"/>
+	<joint name="raspicam_to_base" type="fixed">
+		<parent link="base_link"/>
+		<child link="raspicam_link"/>
 		<origin xyz="${webcam_x_origin} ${webcam_y_origin} ${webcam_z_origin}"/>
 	</joint>
 

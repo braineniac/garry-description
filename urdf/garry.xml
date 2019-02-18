@@ -85,7 +85,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="left_wheel_to_left_gearbox" type="continuous">
+  <joint name="left_wheel_to_left_gearbox" type="fixed">
     <parent link="left_gearbox"/>
     <child link="left_wheel"/>
     <origin xyz="-4.575 -4.5 -3.3"/>
@@ -96,11 +96,11 @@
     <child link="left_gearbox"/>
     <origin xyz="-2.6 -4.5 0.2"/>
   </joint>
-  <joint name="right_wheel_to_right_gearbox" type="continuous">
+  <joint name="right_wheel_to_right_gearbox" type="fixed">
     <parent link="right_gearbox"/>
     <child link="right_wheel"/>
     <origin xyz="4.575 -4.5 -3.3"/>
-    <axis xyz="0 0  0 "/>
+    <axis xyz="-1 0 0"/>
   </joint>
   <joint name="right_gearbox_to_base" type="fixed">
     <parent link="base_link"/>
@@ -122,18 +122,18 @@
   <joint name="imu_to_base" type="fixed">
     <parent link="base_link"/>
     <child link="imu_link"/>
-    <origin xyz="-4.0 -4.5 0.2"/>
-  </joint>
-  <link name="raspi_cam_link"/>
-  <joint name="raspi_cam_to_base" type="fixed">
-    <parent link="base_link"/>
-    <child link="raspi_cam_link"/>
-    <origin xyz="0.0 0.0 15.0"/>
+    <origin rpy="0.0 0.0 -1.57079632679" xyz="-4.0 -4.5 0.2"/>
   </joint>
   <link name="webcam_link"/>
   <joint name="webcam_to_base" type="fixed">
     <parent link="base_link"/>
     <child link="webcam_link"/>
+    <origin xyz="0.0 0.0 15.0"/>
+  </joint>
+  <link name="raspicam_link"/>
+  <joint name="raspicam_to_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="raspicam_link"/>
     <origin xyz="1.6 -9.0 15.0"/>
   </joint>
 </robot>
