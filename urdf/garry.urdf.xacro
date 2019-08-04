@@ -23,6 +23,7 @@
 	<xacro:property name="gearbox_y_joint" value="${gearbox_y_origin+gearbox_y_len/2+wheel_th/2}"/>
 	<xacro:property name="gearbox_z_origin" value="${-gearbox_z_len/2-base_z_len}"/>
 
+    <xacro:property name="imu_x_origin" value="0.00"/>
 	<xacro:property name="imu_y_origin" value="0.04"/>
 	<xacro:property name="imu_y_len" value="0.017"/>
 	<xacro:property name="imu_x_len" value="0.022"/>
@@ -150,7 +151,7 @@
 		<origin xyz="${wheel_x_origin} ${gearbox_y_origin} ${base_z_len/2}"/>
 	</joint>
 
-	<link name="imu_link">
+	<link name="base_imu_link">
 		<visual>
 			<geometry>
 				<box size="${imu_x_len} ${imu_y_len} ${imu_z_len}"/>
@@ -165,8 +166,8 @@
 
 	<joint name="imu_to_base" type="fixed">
 		<parent link="base_link"/>
-		<child link="imu_link"/>
-		<origin xyz=" ${wheel_x_origin} ${imu_y_origin} ${base_z_len/2}" rpy="0.0 0.0 ${imu_yaw}"/>
+		<child link="base_imu_link"/>
+		<origin xyz=" ${imu_x_origin} ${imu_y_origin} ${base_z_len/2}" rpy="0.0 0.0 ${imu_yaw}"/>
 	</joint>
 
 	<link name="webcam_link"/>
