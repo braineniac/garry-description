@@ -28,7 +28,7 @@
 	<xacro:property name="imu_y_len" value="0.017"/>
 	<xacro:property name="imu_x_len" value="0.022"/>
 	<xacro:property name="imu_z_len" value="0.001"/>
-	<xacro:property name="imu_yaw" value="${-pi}"/>
+	<xacro:property name="imu_yaw" value="${0}"/>
 
 	<xacro:property name="raspi_cam_z_origin" value="0.15"/>
 
