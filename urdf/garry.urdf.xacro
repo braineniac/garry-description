@@ -29,6 +29,7 @@
 	<xacro:property name="imu_x_len" value="0.022"/>
 	<xacro:property name="imu_z_len" value="0.001"/>
 	<xacro:property name="imu_yaw" value="${0}"/>
+	<xacro:property name="imu_roll" value="${pi}"/>
 
 	<xacro:property name="raspi_cam_z_origin" value="0.15"/>
 
@@ -167,7 +168,7 @@
 	<joint name="imu_to_base" type="fixed">
 		<parent link="base_link"/>
 		<child link="base_imu_link"/>
-		<origin xyz=" ${imu_x_origin} ${imu_y_origin} ${base_z_len/2}" rpy="0.0 0.0 ${imu_yaw}"/>
+		<origin xyz=" ${imu_x_origin} ${imu_y_origin} ${base_z_len/2}" rpy="${imu_roll} 0.0 ${imu_yaw}"/>
 	</joint>
 
 	<link name="webcam_link"/>
